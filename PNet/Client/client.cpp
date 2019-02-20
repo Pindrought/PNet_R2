@@ -2,12 +2,19 @@
 //client.cpp
 #include <PNet/IncludeMe.h>
 
+using namespace PNet;
+
 int main()
 {
-	if (PNet::Network::Initialize())
+	if (Network::Initialize())
 	{
-
+		Socket socket;
+		PResult result = socket.Create();
+		if (result == PResult::P_Success)
+		{
+			socket.Close();
+		}
 	}
-	PNet::Network::Shutdown();
+	Network::Shutdown();
 	return 0;
 }

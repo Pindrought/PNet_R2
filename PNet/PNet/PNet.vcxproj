@@ -144,11 +144,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="IncludeMe.h" />
+    <ClInclude Include="IPVersion.h" />
     <ClInclude Include="Network.h" />
+    <ClInclude Include="PResult.h" />
+    <ClInclude Include="Protocol.h" />
+    <ClInclude Include="Socket.h" />
+    <ClInclude Include="SocketHandle.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Network.cpp" />
+    <ClCompile Include="Socket.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
