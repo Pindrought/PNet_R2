@@ -150,6 +150,7 @@
     <ClInclude Include="Protocol.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="SocketHandle.h" />
+    <ClInclude Include="SocketOption.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>

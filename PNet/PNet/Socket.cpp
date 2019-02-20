@@ -32,6 +32,12 @@ namespace PNet
 			return PResult::P_NotYetImplemented;
 		}
 
+		if (SetSocketOption(PNet::SocketOption::NoDelay, TRUE) != PResult::P_Success)
+			return PResult::P_NotYetImplemented;
+
+		if (SetSocketOption(PNet::SocketOption::ReuseAddress, TRUE) != PResult::P_Success)
+			return PResult::P_NotYetImplemented;
+
 		return PResult::P_Success;
 	}
 
@@ -50,6 +56,28 @@ namespace PNet
 		{
 			return PResult::P_NotYetImplemented;
 		}
+	}
+
+	PResult Socket::SetSocketOption(SocketOption socketOption, BOOL flag)
+	{
+		int result = SOCKET_ERROR;
+		switch (socketOption)
+		{
+		case SocketOption::NoDelay: //Nagle's Algorithm
+			result = setsockopt(handle, IPPROTO_TCP, TCP_NODELAY, (char*)&flag, sizeof(BOOL));
+			break;
+		case SocketOption::ReuseAddress:
+			result = setsockopt(handle, SOL_SOCKET, SO_REUSEADDR, (char*)&flag, sizeof(BOOL));
+			break;
+		}
+
+		if (result == SOCKET_ERROR)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+
+		return PResult::P_Success;
 	}
 
 	SocketHandle Socket::GetHandle()
