@@ -8,16 +8,20 @@ namespace PNet
 	class IPAddress
 	{
 	public:
-		IPAddress(std::string ip, unsigned short port, IPVersion ipversion);
-		std::string ToString();
-		uint32_t GetAddress();
+		IPAddress(std::string hostname, unsigned short port, IPVersion ipversion);
+		std::string GetHostname();
+
+		std::string GetIPAsString();
+		uint32_t GetIPAsInt();
+
 		unsigned short GetPort();
 
 		bool IsValid();
 		IPVersion GetIPVersion();
 	private:
-		std::string ip;
-		uint32_t address;
+		std::string hostname;
+		std::string ip_string;
+		uint32_t ip_int;
 		unsigned short port;
 		IPVersion ipversion;
 		bool isValid = false;
