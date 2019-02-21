@@ -19,6 +19,5 @@ namespace PNet
 		Protocol protocol = Protocol::TCP;
 		IPVersion ipversion = IPVersion::IPV4;
 		SocketHandle handle = INVALID_SOCKET;
-		bool isBlocking = false;
 	};
 }
