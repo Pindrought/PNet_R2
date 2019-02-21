@@ -17,7 +17,14 @@ int main()
 			if (result == PResult::P_Success)
 			{
 				std::cout << "Socket successfully bound to port 8000." << std::endl;
+				Socket newConnection;
+				if (socket.Accept(newConnection))
+				{
+
+				}
 			}
+
+
 			socket.Close();
 		}
 	}

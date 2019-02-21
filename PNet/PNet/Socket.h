@@ -18,6 +18,8 @@ namespace PNet
 		PResult Close();
 		PResult SetSocketOption(SocketOption socketOption, BOOL flag);
 		PResult Bind(IPAddress ipaddress);
+		PResult Accept(Socket & socket);
+		PResult Connect(IPAddress ipaddress);
 	private:
 		Protocol protocol = Protocol::TCP;
 		IPVersion ipversion = IPVersion::IPV4;
