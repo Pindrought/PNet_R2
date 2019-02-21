@@ -3,7 +3,7 @@
 namespace PNet
 {
 	IPAddress::IPAddress(std::string hostname, unsigned short port, IPVersion ipversion)
-		:hostname(hostname), port(htons(port)), ipversion(ipversion)
+		:hostname(hostname), port(port), ipversion(ipversion)
 	{
 		ip_string = "";
 		//Need to generate 32 bit integer representation of ip
