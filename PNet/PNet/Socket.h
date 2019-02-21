@@ -11,7 +11,6 @@ namespace PNet
 	{
 	public:
 		Socket(Protocol protocol = Protocol::TCP, IPVersion ipversion = IPVersion::IPV4, SocketHandle handle = INVALID_SOCKET);
-	public:
 		SocketHandle GetHandle();
 		IPVersion GetIPVersion();
 		PResult Create();

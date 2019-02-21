@@ -10,6 +10,16 @@ namespace PNet
 		assert(ipversion == IPVersion::IPV4);
 	}
 
+	SocketHandle Socket::GetHandle()
+	{
+		return handle;
+	}
+
+	IPVersion Socket::GetIPVersion()
+	{
+		return ipversion;
+	}
+
 	PResult Socket::Create()
 	{
 		assert(protocol == Protocol::TCP);
@@ -109,13 +119,4 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
-	SocketHandle Socket::GetHandle()
-	{
-		return handle;
-	}
-
-	IPVersion Socket::GetIPVersion()
-	{
-		return ipversion;
-	}
 }
