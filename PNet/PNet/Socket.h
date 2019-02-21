@@ -1,7 +1,7 @@
 #pragma once
 #include "SocketHandle.h"
 #include "Protocol.h"
-#include "IPVersion.h"
+#include "IPAddress.h"
 #include "PResult.h"
 #include "SocketOption.h"
 
