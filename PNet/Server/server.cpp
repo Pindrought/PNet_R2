@@ -1,4 +1,4 @@
-//Tutorial 5
+//Tutorial 6
 //server.cpp
 #include <PNet/IncludeMe.h>
 #include <iostream>
@@ -23,7 +23,6 @@ int main()
 
 				}
 			}
-
 
 			socket.Close();
 		}
