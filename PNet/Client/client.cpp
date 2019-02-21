@@ -13,7 +13,7 @@ int main()
 		PResult result = socket.Create();
 		if (result == PResult::P_Success)
 		{
-			if (socket.Connect(IPAddress("192.168.0.11", 8000, IPVersion::IPV4)) == PResult::P_Success)
+			if (socket.Connect(IPAddress("127.0.0.1", 8000, IPVersion::IPV4)) == PResult::P_Success)
 			{
 				std::cout << "Successfully connected!" << std::endl;
 			}

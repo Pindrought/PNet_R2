@@ -13,7 +13,7 @@ int main()
 		PResult result = socket.Create();
 		if (result == PResult::P_Success)
 		{
-			result = socket.Listen(IPAddress("192.168.0.11", 8000, IPVersion::IPV4));
+			result = socket.Listen(IPAddress("127.0.0.1", 8000, IPVersion::IPV4));
 			if (result == PResult::P_Success)
 			{
 				std::cout << "Socket successfully bound & listening on port 8000." << std::endl;
