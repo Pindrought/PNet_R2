@@ -16,6 +16,16 @@ int main()
 			if (socket.Connect(IPAddress("127.0.0.1", 8000, IPVersion::IPV4)) == PResult::P_Success)
 			{
 				std::cout << "Successfully connected!" << std::endl;
+				char buffer[256];
+				memset(buffer, 'X', 256);
+				strcpy_s(buffer, "Hello From the Client!\0");
+				int bytesSent = 0;
+				while (result == PResult::P_Success)
+				{
+					result = socket.Send(buffer, 256, bytesSent);
+					std::cout << "Attempting to send chunk..." << std::endl;
+					Sleep(100);
+				}
 			}
 			else
 			{

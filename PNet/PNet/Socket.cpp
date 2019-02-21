@@ -131,6 +131,35 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
+	PResult Socket::Recv(void * buffer, int recvSize, int & bytesReceived)
+	{
+		bytesReceived = recv(handle, (char*)buffer, recvSize, NULL);
+		if (bytesReceived == 0) //If connection was gracefully closed
+		{
+			return PResult::P_NotYetImplemented;
+		}
+		if (bytesReceived == SOCKET_ERROR)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+
+		return PResult::P_Success;
+	}
+
+	PResult Socket::Send(void * buffer, int sendSize, int & bytesSent)
+	{
+		bytesSent = send(handle, (char*)buffer, sendSize, NULL);
+
+		if (bytesSent == SOCKET_ERROR)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+
+		return PResult::P_Success;
+	}
+
 	PResult Socket::Bind(IPAddress ipaddress)
 	{
 		sockaddr_in addr = {};

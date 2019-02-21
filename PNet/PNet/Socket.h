@@ -19,6 +19,9 @@ namespace PNet
 		PResult Listen(IPAddress ipaddress, int backlog = 100);
 		PResult Accept(Socket & socket);
 		PResult Connect(IPAddress ipaddress);
+		PResult Recv(void * buffer, int recvSize, int &bytesReceived);
+		PResult Send(void * buffer, int sendSize, int &bytesSent);
+
 	private:
 		PResult Bind(IPAddress ipaddress);
 
