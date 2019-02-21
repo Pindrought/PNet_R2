@@ -1,6 +1,7 @@
-//Tutorial 7
+//Tutorial 8
 //client.cpp
 #include <PNet/IncludeMe.h>
+#include <iostream>
 
 using namespace PNet;
 
