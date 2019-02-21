@@ -1,4 +1,4 @@
-//Tutorial 5
+//Tutorial 6
 //client.cpp
 #include <PNet/IncludeMe.h>
 
