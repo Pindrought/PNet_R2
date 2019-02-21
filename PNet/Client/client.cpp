@@ -17,7 +17,6 @@ int main()
 			{
 				std::cout << "Successfully connected!" << std::endl;
 				char buffer[256];
-				memset(buffer, 'X', 256);
 				strcpy_s(buffer, "Hello From the Client!\0");
 				int bytesSent = 0;
 				while (result == PResult::P_Success)
