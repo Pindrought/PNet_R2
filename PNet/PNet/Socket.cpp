@@ -4,10 +4,20 @@
 namespace PNet
 {
 	Socket::Socket(Protocol protocol, IPVersion ipversion, SocketHandle handle)
-		:protocol(protocol),ipversion(ipversion),handle(handle)
+		:protocol(protocol), ipversion(ipversion), handle(handle)
 	{
 		assert(protocol == Protocol::TCP);
 		assert(ipversion == IPVersion::IPV4);
+	}
+
+	SocketHandle Socket::GetHandle()
+	{
+		return handle;
+	}
+
+	IPVersion Socket::GetIPVersion()
+	{
+		return ipversion;
 	}
 
 	PResult Socket::Create()
@@ -95,6 +105,32 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
+	PResult Socket::Accept(Socket & outSocket)
+	{
+		SocketHandle newConnectionHandle = accept(handle, NULL, NULL);
+		if (newConnectionHandle == INVALID_SOCKET)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+		outSocket = Socket(protocol, ipversion, newConnectionHandle);
+		return PResult::P_Success;
+	}
+
+	PResult Socket::Connect(IPAddress ipaddress)
+	{
+		sockaddr_in addr = { };
+		addr.sin_addr.s_addr = ipaddress.GetIPAsInt();
+		addr.sin_port = ipaddress.GetPort();
+		addr.sin_family = AF_INET; //ipv4
+		if (connect(handle, (sockaddr*)(&addr), sizeof(sockaddr_in)) == SOCKET_ERROR)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+		return PResult::P_Success;
+	}
+
 	PResult Socket::Bind(IPAddress ipaddress)
 	{
 		sockaddr_in addr = {};
@@ -109,13 +145,4 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
-	SocketHandle Socket::GetHandle()
-	{
-		return handle;
-	}
-
-	IPVersion Socket::GetIPVersion()
-	{
-		return ipversion;
-	}
 }

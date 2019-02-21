@@ -9,7 +9,7 @@ namespace PNet
 		//Need to generate 32 bit integer representation of ip
 		ip_int = INADDR_NONE;
 		inet_pton(AF_INET, hostname.c_str(), &ip_int); //Attempt to convert ip from presentation to network format (string to 32 bit big endian integer)
-
+		uint32_t test = htonl(ip_int);
 		if (ip_int != INADDR_NONE)
 		{
 			ip_string = hostname; //If address was a valid ipv4 and not a hostname then ip_string = hostname
@@ -26,7 +26,7 @@ namespace PNet
 				if (result)
 				{
 					ip_int = reinterpret_cast<sockaddr_in*>(result->ai_addr)->sin_addr.s_addr;
-					ip_string.resize(16); //Resize ip to store ipv4 address
+					ip_string.resize(16); //Resize ip to store ipv4 address in text format
 					inet_ntop(AF_INET, &ip_int, &ip_string[0], 16); //Determine ip string from the integer representation of IPV4
 					freeaddrinfo(result); //memory cleanup from getaddrinfo call
 					isValid = true;

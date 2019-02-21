@@ -13,14 +13,29 @@ int main()
 		PResult result = socket.Create();
 		if (result == PResult::P_Success)
 		{
-			result = socket.Listen(IPAddress("0.0.0.0", 8000, IPVersion::IPV4));
+			result = socket.Listen(IPAddress("192.168.0.11", 8000, IPVersion::IPV4));
 			if (result == PResult::P_Success)
 			{
-				std::cout << "Socket successfully listening on port 8000." << std::endl;
+				std::cout << "Socket successfully bound & listening on port 8000." << std::endl;
+				Socket newConnection;
+				if (socket.Accept(newConnection) == PResult::P_Success)
+				{
+					std::cout << "Connection accepted!" << std::endl;
+				}
+				else
+				{
+					std::cout << "Failed to accept connection." << std::endl;
+				}
+			}
+			else
+			{
+				std::cout << "Failed to listen." << std::endl;
 			}
 			socket.Close();
 		}
 	}
 	Network::Shutdown();
+
+	system("pause");
 	return 0;
 }
