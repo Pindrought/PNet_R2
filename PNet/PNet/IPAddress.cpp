@@ -2,25 +2,32 @@
 
 namespace PNet
 {
-	IPAddress::IPAddress(std::string ip, unsigned short port, IPVersion ipversion)
-		:ip(ip), port(htons(port)), ipversion(ipversion)
+	IPAddress::IPAddress(std::string hostname, unsigned short port, IPVersion ipversion)
+		:hostname(hostname), port(htons(port)), ipversion(ipversion)
 	{
+		ip_string = "";
 		//Need to generate 32 bit integer representation of ip
-		address = INADDR_NONE;
-		inet_pton(AF_INET, ip.c_str(), &address); //Attempt to convert ip from presentation to network format (string to 32 bit big endian integer)
+		ip_int = INADDR_NONE;
+		inet_pton(AF_INET, hostname.c_str(), &ip_int); //Attempt to convert ip from presentation to network format (string to 32 bit big endian integer)
 
-		if (address != INADDR_NONE)
+		if (ip_int != INADDR_NONE)
 		{
+			ip_string = hostname; //If address was a valid ipv4/successfully converted then ip_string = hostname
 			isValid = true;
 		}
+		
 	}
-	std::string IPAddress::ToString()
+	std::string IPAddress::GetHostname()
 	{
-		return ip;
+		return hostname;
 	}
-	uint32_t IPAddress::GetAddress()
+	std::string IPAddress::GetIPAsString()
 	{
-		return address;
+		return ip_string;
+	}
+	uint32_t IPAddress::GetIPAsInt()
+	{
+		return ip_int;
 	}
 	unsigned short IPAddress::GetPort()
 	{
