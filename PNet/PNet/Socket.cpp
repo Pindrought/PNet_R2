@@ -84,7 +84,7 @@ namespace PNet
 	{
 		sockaddr_in addr = {};
 		addr.sin_family = AF_INET; //IPV4
-		addr.sin_port = ipaddress.GetPort();
+		addr.sin_port = htons(ipaddress.GetPort());
 		addr.sin_addr.s_addr = ipaddress.GetIPAsInt();
 		if (bind(handle, (sockaddr*)&addr, sizeof(sockaddr_in)) == SOCKET_ERROR)
 		{
