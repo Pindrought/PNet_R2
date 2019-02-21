@@ -26,7 +26,7 @@ namespace PNet
 				if (result)
 				{
 					ip_int = reinterpret_cast<sockaddr_in*>(result->ai_addr)->sin_addr.s_addr;
-					ip_string.resize(16); //Resize ip to store ipv4 address as text
+					ip_string.resize(16); //Resize ip to store ipv4 address in text format
 					inet_ntop(AF_INET, &ip_int, &ip_string[0], 16); //Determine ip string from the integer representation of IPV4
 					freeaddrinfo(result); //memory cleanup from getaddrinfo call
 					isValid = true;
