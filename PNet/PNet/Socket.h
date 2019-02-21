@@ -21,9 +21,9 @@ namespace PNet
 		PResult Connect(IPAddress ipaddress);
 	private:
 		PResult Bind(IPAddress ipaddress);
+
 		Protocol protocol = Protocol::TCP;
 		IPVersion ipversion = IPVersion::IPV4;
 		SocketHandle handle = INVALID_SOCKET;
-		bool isBlocking = false;
 	};
 }
