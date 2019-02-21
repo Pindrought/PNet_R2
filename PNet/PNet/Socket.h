@@ -17,6 +17,7 @@ namespace PNet
 		PResult Create();
 		PResult Close();
 		PResult SetSocketOption(SocketOption socketOption, BOOL flag);
+		PResult Bind(IPAddress ipaddress);
 	private:
 		Protocol protocol = Protocol::TCP;
 		IPVersion ipversion = IPVersion::IPV4;

@@ -80,6 +80,20 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
+	PResult Socket::Bind(IPAddress ipaddress)
+	{
+		sockaddr_in addr = {};
+		addr.sin_family = AF_INET; //IPV4
+		addr.sin_port = ipaddress.GetPort();
+		addr.sin_addr.s_addr = ipaddress.GetIPAsInt();
+		if (bind(handle, (sockaddr*)&addr, sizeof(sockaddr_in)) == SOCKET_ERROR)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+		return PResult::P_Success;
+	}
+
 	SocketHandle Socket::GetHandle()
 	{
 		return handle;
