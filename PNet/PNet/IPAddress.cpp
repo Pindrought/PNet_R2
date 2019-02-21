@@ -9,7 +9,7 @@ namespace PNet
 		//Need to generate 32 bit integer representation of ip
 		ip_int = INADDR_NONE;
 		inet_pton(AF_INET, hostname.c_str(), &ip_int); //Attempt to convert ip from presentation to network format (string to 32 bit big endian integer)
-		uint32_t test = htonl(ip_int);
+
 		if (ip_int != INADDR_NONE)
 		{
 			ip_string = hostname; //If address was a valid ipv4 and not a hostname then ip_string = hostname
