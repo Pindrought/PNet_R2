@@ -13,6 +13,10 @@ namespace PNet
 		{
 			isValid = true;
 		}
+		else //
+		{
+
+		}
 	}
 	std::string IPAddress::ToString()
 	{
