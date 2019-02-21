@@ -1,7 +1,6 @@
 //Tutorial 4
 //server.cpp
 #include <PNet/IncludeMe.h>
-#include <WS2tcpip.h>
 #include <iostream>
 
 using namespace PNet;
@@ -14,7 +13,6 @@ int main()
 		PResult result = socket.Create();
 		if (result == PResult::P_Success)
 		{
-
 			socket.Close();
 		}
 	}
