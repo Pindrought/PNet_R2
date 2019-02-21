@@ -80,6 +80,21 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
+	PResult Socket::Listen(IPAddress ipaddress, int backlog)
+	{
+		PResult result = Bind(ipaddress);
+		if (result != PResult::P_Success)
+			return result;
+
+		if (listen(handle, backlog) == SOCKET_ERROR)
+		{
+			int error = WSAGetLastError();
+			return PResult::P_NotYetImplemented;
+		}
+
+		return PResult::P_Success;
+	}
+
 	PResult Socket::Bind(IPAddress ipaddress)
 	{
 		sockaddr_in addr = {};

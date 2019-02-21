@@ -17,8 +17,10 @@ namespace PNet
 		PResult Create();
 		PResult Close();
 		PResult SetSocketOption(SocketOption socketOption, BOOL flag);
-		PResult Bind(IPAddress ipaddress);
+		PResult Listen(IPAddress ipaddress, int backlog = 100);
 	private:
+		PResult Bind(IPAddress ipaddress);
+
 		Protocol protocol = Protocol::TCP;
 		IPVersion ipversion = IPVersion::IPV4;
 		SocketHandle handle = INVALID_SOCKET;

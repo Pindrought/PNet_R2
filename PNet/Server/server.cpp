@@ -1,4 +1,4 @@
-//Tutorial 5
+//Tutorial 7
 //server.cpp
 #include <PNet/IncludeMe.h>
 #include <iostream>
@@ -13,10 +13,10 @@ int main()
 		PResult result = socket.Create();
 		if (result == PResult::P_Success)
 		{
-			result = socket.Bind(IPAddress("0.0.0.0", 8000, IPVersion::IPV4));
+			result = socket.Listen(IPAddress("0.0.0.0", 8000, IPVersion::IPV4));
 			if (result == PResult::P_Success)
 			{
-				std::cout << "Socket successfully bound to port 8000." << std::endl;
+				std::cout << "Socket successfully listening on port 8000." << std::endl;
 			}
 			socket.Close();
 		}
