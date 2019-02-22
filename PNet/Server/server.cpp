@@ -1,4 +1,4 @@
-//Tutorial 6
+//Tutorial 06
 //server.cpp
 #include <PNet/IncludeMe.h>
 #include <iostream>
