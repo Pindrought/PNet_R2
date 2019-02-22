@@ -21,7 +21,7 @@ int main()
 				int bytesSent = 0;
 				while (result == PResult::P_Success)
 				{
-					result = socket.Send(buffer, 256, bytesSent);
+					result = socket.SendAll(buffer, 256);
 					std::cout << "Attempting to send chunk..." << std::endl;
 					Sleep(100);
 				}

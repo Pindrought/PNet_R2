@@ -21,7 +21,8 @@ namespace PNet
 		PResult Connect(IPAddress ipaddress);
 		PResult Recv(void * buffer, int recvSize, int &bytesReceived);
 		PResult Send(void * buffer, int sendSize, int &bytesSent);
-
+		PResult RecvAll(void * buffer, int recvSize);
+		PResult SendAll(void * buffer, int sendSize);
 	private:
 		PResult Bind(IPAddress ipaddress);
 

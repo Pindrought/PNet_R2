@@ -160,6 +160,40 @@ namespace PNet
 		return PResult::P_Success;
 	}
 
+	PResult Socket::RecvAll(void * buffer, int recvSize)
+	{
+		int totalBytesReceived = 0;
+		while (totalBytesReceived < recvSize)
+		{
+			int bytesReceived = 0;
+			byte * bufferOffset = (byte*)buffer + totalBytesReceived;
+			int bytesRemaining = recvSize - totalBytesReceived;
+			PResult result = Recv(bufferOffset, bytesRemaining, bytesReceived);
+			if (result != PResult::P_Success)
+				return result;
+
+			totalBytesReceived += bytesReceived;
+		}
+		return PResult::P_Success;
+	}
+
+	PResult Socket::SendAll(void * buffer, int sendSize)
+	{
+		int totalBytesSent = 0;
+		while (totalBytesSent < sendSize)
+		{
+			int bytesSent = 0;
+			byte * bufferOffset = (byte*)buffer + totalBytesSent;
+			int bytesRemaining = sendSize - totalBytesSent;
+			PResult result = Send(bufferOffset, bytesRemaining, bytesSent);
+			if (result != PResult::P_Success)
+				return result;
+
+			totalBytesSent += bytesSent;
+		}
+		return PResult::P_Success;
+	}
+
 	PResult Socket::Bind(IPAddress ipaddress)
 	{
 		sockaddr_in addr = {};
